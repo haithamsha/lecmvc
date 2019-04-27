@@ -1,0 +1,43 @@
+﻿@model IEnumerable<lec0Project.Models.Student>
+
+@{
+    ViewBag.Title = "Data";
+}
+
+<h2>Data</h2>
+
+<p>
+    @Html.ActionLink("Create New Student", "Create", "Home")
+
+    @*<a href="@Url.Action("Create","Home")" >Create New Student</a>*@
+<table class="table table-striped table-hover">
+    <tr>
+        <th>
+           @Html.DisplayNameFor(s => s.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+     <th>
+
+         ID
+     </th>
+       
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+       <th>
+
+           @Html.DisplayFor(v=>item.Id)
+       </th>
+    </tr>
+}
+
+</table>
