@@ -14,7 +14,9 @@ namespace lec0Project.Models
         [StringLength(50, MinimumLength =5)]
         public string Name { get; set; }
         [Range(1, 1000, ErrorMessage ="يجب ان تكون القيمة من 1 الي 1000")]
+        [DataType(DataType.Currency)]
         public decimal Quantity { get; set; }
+        [Range(1, 1000, ErrorMessage = "Price Must be between 1 and 1000")]
         public decimal? Price { get; set; }
 
         // Lazy Loading
@@ -22,6 +24,9 @@ namespace lec0Project.Models
         [Display(Name="Category")]
 
         public int CategoryId { get; set; }
-        
+
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
+        public DateTime? CreationDate { get; set; }
     }
 }

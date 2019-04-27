@@ -220,6 +220,14 @@
     <Compile Include="Migrations\201904242049108_Product_Edit_Name_Property.Designer.cs">
       <DependentUpon>201904242049108_Product_Edit_Name_Property.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904271938589_Product_AddCreationDate.cs" />
+    <Compile Include="Migrations\201904271938589_Product_AddCreationDate.Designer.cs">
+      <DependentUpon>201904271938589_Product_AddCreationDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904271959141_Product_MakeCreationDateNull.cs" />
+    <Compile Include="Migrations\201904271959141_Product_MakeCreationDateNull.Designer.cs">
+      <DependentUpon>201904271959141_Product_MakeCreationDateNull.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppDbContext.cs" />
@@ -336,6 +344,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904242049108_Product_Edit_Name_Property.resx">
       <DependentUpon>201904242049108_Product_Edit_Name_Property.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904271938589_Product_AddCreationDate.resx">
+      <DependentUpon>201904271938589_Product_AddCreationDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904271959141_Product_MakeCreationDateNull.resx">
+      <DependentUpon>201904271959141_Product_MakeCreationDateNull.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
