@@ -6,7 +6,7 @@ using System.Web;
 
 namespace lec0Project.Models
 {
-    public class AppDbContext:DbContext
+    public class AppDbContext:ApplicationDbContext
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }

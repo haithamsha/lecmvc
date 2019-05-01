@@ -2,7 +2,14 @@
     ViewBag.Title = "Contact";
 }
 
-
+<div>
+    @{ 
+        if(User.IsInRole("Admin"))
+        {
+            <p>Hello Admin</p>
+        }
+    }
+</div>
 
 
 <script>

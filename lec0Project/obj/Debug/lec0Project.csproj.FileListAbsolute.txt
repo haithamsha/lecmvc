@@ -82,7 +82,4 @@ c:\users\haitham\documents\visual studio 2015\Projects\lec0Project\lec0Project\o
 C:\Users\Haitham\Documents\Visual Studio 2015\Projects\lec0Project\lec0Project\obj\Debug\lec0Project.csprojResolveAssemblyReference.cache
 C:\Users\Haitham\Documents\Visual Studio 2015\Projects\lec0Project\lec0Project\obj\Debug\lec0Project.Migrations.initial.resources
 C:\Users\Haitham\Documents\Visual Studio 2015\Projects\lec0Project\lec0Project\obj\Debug\lec0Project.csproj.GenerateResource.Cache
-C:\Users\Haitham\Documents\Visual Studio 2015\Projects\lec0Project\lec0Project\obj\Debug\lec0Project.Migrations.Category_Change_CreationDate.resources
-C:\Users\Haitham\Documents\Visual Studio 2015\Projects\lec0Project\lec0Project\obj\Debug\lec0Project.Migrations.Product_Edit_Name_Property.resources
-C:\Users\Haitham\Documents\Visual Studio 2015\Projects\lec0Project\lec0Project\obj\Debug\lec0Project.Migrations.Product_AddCreationDate.resources
-C:\Users\Haitham\Documents\Visual Studio 2015\Projects\lec0Project\lec0Project\obj\Debug\lec0Project.Migrations.Product_MakeCreationDateNull.resources
+C:\Users\Haitham\Documents\Visual Studio 2015\Projects\lec0Project\lec0Project\obj\Debug\lec0Project.Migrations.AddUserDataToProductAndCategory.resources

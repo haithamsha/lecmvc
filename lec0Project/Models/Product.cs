@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace lec0Project.Models
 {
-    public class Product
+    public class Product:SharedUserData
     {
         [Key]
         public int ProductId { get; set; }
@@ -28,5 +29,6 @@ namespace lec0Project.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         public DateTime? CreationDate { get; set; }
+
     }
 }

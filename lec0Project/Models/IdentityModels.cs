@@ -21,11 +21,11 @@ namespace lec0Project.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("AppDbContext", throwIfV1Schema: false)
         {
         }
 
-
+       
 
         public static ApplicationDbContext Create()
         {

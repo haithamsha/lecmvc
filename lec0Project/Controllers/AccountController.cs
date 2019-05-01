@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using lec0Project.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace lec0Project.Controllers
 {
@@ -156,7 +157,24 @@ namespace lec0Project.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
+                    AppDbContext _context = new Models.AppDbContext();
+                    // Add User to the "Admin" Role
+                    var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(_context));
+
+
+                   // var userId = User.Identity.GetUserId();
+                    if (!roleManager.RoleExists("Admin"))
+                    {
+                       await roleManager.CreateAsync(new IdentityRole { Id = "1", Name = "Admin" });
+
+                        await UserManager.AddToRoleAsync(user.Id, "Admin");
+                    }
+
+                    await UserManager.AddToRoleAsync(user.Id, "Admin");
+                   
+
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

@@ -7,13 +7,13 @@ namespace lec0Project.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class initial : IMigrationMetadata
+    public sealed partial class AddUserDataToProductAndCategory : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddUserDataToProductAndCategory));
         
         string IMigrationMetadata.Id
         {
-            get { return "201904241906067_initial"; }
+            get { return "201904301841232_AddUserDataToProductAndCategory"; }
         }
         
         string IMigrationMetadata.Source

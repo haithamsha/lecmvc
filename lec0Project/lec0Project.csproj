@@ -208,25 +208,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201904241906067_initial.cs" />
-    <Compile Include="Migrations\201904241906067_initial.Designer.cs">
-      <DependentUpon>201904241906067_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201904301833363_initial.cs" />
+    <Compile Include="Migrations\201904301833363_initial.Designer.cs">
+      <DependentUpon>201904301833363_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201904242026453_Category_Change_CreationDate.cs" />
-    <Compile Include="Migrations\201904242026453_Category_Change_CreationDate.Designer.cs">
-      <DependentUpon>201904242026453_Category_Change_CreationDate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904242049108_Product_Edit_Name_Property.cs" />
-    <Compile Include="Migrations\201904242049108_Product_Edit_Name_Property.Designer.cs">
-      <DependentUpon>201904242049108_Product_Edit_Name_Property.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904271938589_Product_AddCreationDate.cs" />
-    <Compile Include="Migrations\201904271938589_Product_AddCreationDate.Designer.cs">
-      <DependentUpon>201904271938589_Product_AddCreationDate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904271959141_Product_MakeCreationDateNull.cs" />
-    <Compile Include="Migrations\201904271959141_Product_MakeCreationDateNull.Designer.cs">
-      <DependentUpon>201904271959141_Product_MakeCreationDateNull.cs</DependentUpon>
+    <Compile Include="Migrations\201904301841232_AddUserDataToProductAndCategory.cs" />
+    <Compile Include="Migrations\201904301841232_AddUserDataToProductAndCategory.Designer.cs">
+      <DependentUpon>201904301841232_AddUserDataToProductAndCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -239,6 +227,7 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\SalesDetail.cs" />
     <Compile Include="Models\SalesMasterViewModel.cs" />
+    <Compile Include="Models\SharedUserData.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\StudentModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -336,20 +325,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904241906067_initial.resx">
-      <DependentUpon>201904241906067_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904301833363_initial.resx">
+      <DependentUpon>201904301833363_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904242026453_Category_Change_CreationDate.resx">
-      <DependentUpon>201904242026453_Category_Change_CreationDate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904242049108_Product_Edit_Name_Property.resx">
-      <DependentUpon>201904242049108_Product_Edit_Name_Property.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904271938589_Product_AddCreationDate.resx">
-      <DependentUpon>201904271938589_Product_AddCreationDate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904271959141_Product_MakeCreationDateNull.resx">
-      <DependentUpon>201904271959141_Product_MakeCreationDateNull.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904301841232_AddUserDataToProductAndCategory.resx">
+      <DependentUpon>201904301841232_AddUserDataToProductAndCategory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace lec0Project.Models
 {
-    public class Category
+    public class Category:SharedUserData
     {
         [Key]
         public int CategoryId { get; set; }
@@ -18,5 +19,6 @@ namespace lec0Project.Models
         public string Description { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
+
     }
 }
