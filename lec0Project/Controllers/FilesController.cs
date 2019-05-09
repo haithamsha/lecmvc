@@ -14,6 +14,19 @@ namespace lec0Project.Controllers
             return View();
         }
 
+        public ActionResult Upload()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Upload(HttpPostedFileBase file)
+        {
+            file.SaveAs(Server.MapPath($"~/Content/{file.FileName}"));
+            ViewBag.message = "File uploaded successfully!";
+            return View();
+        }
+
         public ActionResult Download()
         {
             // Read file

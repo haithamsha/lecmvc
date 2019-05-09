@@ -17,6 +17,10 @@ namespace lec0Project.Models
         public string Name { get; set; }
         public DateTime? CreationDate { get; set; }
         public string Description { get; set; }
+        public string FileName { get; set; }
+
+        [NotMapped]
+        public HttpPostedFileBase File { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
 

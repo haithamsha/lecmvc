@@ -11,7 +11,6 @@ namespace lec0Project.Controllers
 {
     [MyLogActionFilter]
 
-    [Authorize(Roles ="Admin")]
     public class HomeController : Controller
     {
 

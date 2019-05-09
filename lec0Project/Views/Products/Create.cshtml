@@ -58,6 +58,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
+                <input type="button" id="btnSave" value="Insert With Ajax" /> <span id="spLoading"></span>
             </div>
         </div>
     </div>
@@ -69,4 +70,24 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    
+    <script>
+        $(function () {
+
+            $("#btnSave").click(function () {
+                var product = { Name: 'prod3', Price: 40, Quantity: 20, CategoryId: 1 };
+
+                $("#spLoading").html('loading....');
+                $.post('/Products/InsertProduct', { product: product})
+                .done(function (data) {
+                    console.log(data);
+                    $("#spLoading").html('');
+                })
+                .error(function (err) {
+                    console.log(err);
+                })
+            })
+
+        });
+    </script>
 }

@@ -1,4 +1,5 @@
 ﻿using lec0Project.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,11 @@ namespace lec0Project.Controllers
         }
 
        
-
+        public ActionResult BestPrice()
+        {
+            var products = _context.Products.Where(p => p.Price < 30).ToList();
+            return PartialView("_ProductsCategory", products);
+        }
 
         private void FillCategoryDDL(int? categoryId =  null)
         {
@@ -118,6 +123,17 @@ namespace lec0Project.Controllers
                 ViewBag.Error = ex.Message;
                 return View();
             }
+        }
+
+        public ActionResult InsertProduct(Product product)
+        {
+            product.CreationDate = DateTime.Now;
+            product.UserId = User.Identity.GetUserId();
+            _context.Products.Add(product);
+
+            _context.SaveChanges();
+
+            return Json("Data Saved!", JsonRequestBehavior.AllowGet);
         }
     }
 }

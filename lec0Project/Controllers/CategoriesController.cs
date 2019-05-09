@@ -35,9 +35,17 @@ namespace lec0Project.Controllers
                     return View();
                 }
 
+                // Upload file
+                if(category.File != null)
+                {
+                    category.File.SaveAs(Server.MapPath($"~/Content/{category.File.FileName}"));
+                    category.FileName = category.File.FileName;
+                }
+
                 // Add Category to the database
                 _context.Categories.Add(category);
                 _context.SaveChanges();
+
 
                 ViewBag.Message = "Data Saved Successflly!";
 

@@ -34,6 +34,18 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
 
+        <dd>
+            <img src="~/Content/@Model.FileName" />
+        </dd>
+
+
+        <dt>
+            Category Products
+        </dt>
+
+        <dd>
+            @Html.Partial("_ProductsCategory", Model.Products)
+        </dd>
     </dl>
 </div>
 <p>
