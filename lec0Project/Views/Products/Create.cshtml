@@ -70,24 +70,12 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    
+    <script src="~/Scripts/App/product-create.js"></script>
+
     <script>
-        $(function () {
+        var prodcut = { Name: "prod1", price: 400 };
 
-            $("#btnSave").click(function () {
-                var product = { Name: 'prod3', Price: 40, Quantity: 20, CategoryId: 1 };
-
-                $("#spLoading").html('loading....');
-                $.post('/Products/InsertProduct', { product: product})
-                .done(function (data) {
-                    console.log(data);
-                    $("#spLoading").html('');
-                })
-                .error(function (err) {
-                    console.log(err);
-                })
-            })
-
-        });
+        $.post('http://localhost:47719/api/products/', { product: prodcut });
     </script>
+    
 }

@@ -1,5 +1,6 @@
 ﻿using lec0Project.Models;
 using Microsoft.AspNet.Identity;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,13 +14,42 @@ namespace lec0Project.Controllers
         AppDbContext _context = new AppDbContext();
 
         // GET: Products
-        public ActionResult Index()
+        public ActionResult Index(string name, int page = 1)
         {
-            var products = _context.Products.ToList();
+            IQueryable<Product> products = _context.Products;
 
-            return View(products);
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                // Use productService.GetProducts();
+                products = _context.Products.Where(p => p.Name.Contains(name));
+            }
+
+            else
+            {
+                products = _context.Products;
+            }
+
+            if(Request.IsAjaxRequest())
+            {
+                return PartialView("_productList", products.OrderBy(p => p.Name).ToPagedList(page, 10));
+            }
+
+            return View(products.OrderBy(p => p.Name).ToPagedList(page, 10));
         }
 
+        public ActionResult GetProductsByName(string term)
+        {
+            var products = _context.Products
+                .Where(p => p.Name.StartsWith(term))
+                .Select(p => new
+                {
+                    label = p.Name,
+                    id = p.ProductId
+                })
+                .Take(10);
+
+            return Json(products, JsonRequestBehavior.AllowGet);
+        }
        
         public ActionResult BestPrice()
         {

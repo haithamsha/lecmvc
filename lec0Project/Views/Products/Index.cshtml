@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Index";
 }
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+
 
 <h2>Index</h2>
 
@@ -11,57 +13,64 @@
 
     <a href="@Url.Action("Create", "Products")"><i class="glyphicon glyphicon-plus btn-lg">Add</i></a>
 </p>
-<table class="table table-striped table-hover">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
 
-        <th>
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </th>
+@*<form>
+    <input type="text" name="name"  />
+    <input type="submit"  value="Search With Name" />
+</form>*@
 
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Quantity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreationDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category.Name)
-        </td>
-        <td>
-           
-
-            <a href="@Url.Action("Edit","Products", new { id=item.ProductId})" >
-                <i class="glyphicon glyphicon-edit btn-lg"></i>
-            </a>
-
-            @Html.ActionLink("Details", "Details", new { id=item.ProductId }, new { @class = "btn btn-primary"}) |
-
-            <a class="btn btn-danger" onclick="return confirm('Are you sure')" href="@Url.Action("Delete","Products", new { id = item.ProductId}) " >Delete</a>
-        </td>
-    </tr>
+@using (Ajax.BeginForm(new AjaxOptions
+{
+    HttpMethod = "Get",
+    UpdateTargetId = "productList",
+    InsertionMode = InsertionMode.Replace,
+    LoadingElementId = "loadingDiv"
+}))
+{
+    <input id="txtSearch" type="text" name="name" />
+    @Html.Hidden("ProductId")
+    <input type="submit" value="Search With Name" />
 }
 
-</table>
+@Html.Partial("_productList", Model)
+
+@section Scripts {
+    
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+    <script>
+        $(function () {
+
+            $("#txtSearch").autocomplete({
+                source: '/Products/GetProductsByName',
+                select: function (event, ui) {
+                    $("#ProductId").val(ui.item.id);
+                    this.value = ui.item.value;
+                    return false;
+                }
+            });
+
+            var getpage = function (e) {
+                var $a = $(this);
+                var options = {
+                    url: $a.attr('href'),
+                    type: 'get'
+                };
+
+                $.ajax(options)
+                .done(function (data) {
+                    var target = $a.parents("div.pageList").attr('data-target');
+                    $(target).replaceWith(data);
+                    console.log('test');
+                });
+
+                e.preventDefault();
+
+            }
+
+            $(".main-content").on('click', '.pageList a', getpage);
+
+        });
+    </script>
+    }
