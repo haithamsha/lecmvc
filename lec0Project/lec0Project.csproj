@@ -381,6 +381,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\Customers\" />
     <Folder Include="Views\Movies\" />
+    <Folder Include="Views\ts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

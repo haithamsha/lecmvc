@@ -1,7 +1,11 @@
 ﻿using lec0Project.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -12,10 +16,27 @@ namespace lec0Project.Controllers
         AppDbContext _context = new AppDbContext();
 
         // GET: Categories
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            var categories = _context.Categories.ToList();
-            return View(categories);
+            string apiUrl = "http://localhost:47719/api/Categories";
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(apiUrl);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage catApi = await client.GetAsync(apiUrl);
+
+                if (catApi.IsSuccessStatusCode)
+                {
+                    var response = await catApi.Content.ReadAsStringAsync();
+                    var data = JsonConvert.DeserializeObject<List<Category>>(response);
+                    return View(data);
+                }
+
+                return View();
+            }
         }
 
         public ActionResult Create()
@@ -43,8 +64,38 @@ namespace lec0Project.Controllers
                 }
 
                 // Add Category to the database
-                _context.Categories.Add(category);
-                _context.SaveChanges();
+                //_context.Categories.Add(category);
+                //_context.SaveChanges();
+
+                #region Save With Api
+
+                string apiUrl = "http://localhost:47719/api/Categories";
+
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(apiUrl);
+
+                    client.DefaultRequestHeaders.Clear();
+                    var postTask = client.PostAsJsonAsync<Category>(apiUrl, category);
+                    
+
+                    postTask.Wait();
+                    var result = postTask.Result;
+
+                    //Checking the response is successful or not which is sent using HttpClient  
+                    if (result.IsSuccessStatusCode)
+                    {
+                        fillDropDownLists();
+                        var _response = result.Content.ReadAsStringAsync().Result;
+                        var _msg = JsonConvert.DeserializeObject<object>(_response);
+                        ViewBag.resultMessage = _msg;
+                        return View(vm);
+
+                    }
+                }
+                
+                #endregion
+
 
 
                 ViewBag.Message = "Data Saved Successflly!";

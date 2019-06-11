@@ -80,7 +80,7 @@ namespace myapp.webapi.Controllers
             try
             {
                 _context.Products.Add(product);
-               
+                _context.SaveChanges();
                 return Ok("Saved");
             }
             catch (Exception ex)
@@ -99,7 +99,7 @@ namespace myapp.webapi.Controllers
                 var productEntity = _context.Products.Find(id);
 
                 _context.Products.Remove(productEntity);
-
+                _context.SaveChanges();
                 
                 return Ok("Deleted");
             }

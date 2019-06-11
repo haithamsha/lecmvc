@@ -10,5 +10,10 @@ namespace lec0Project.Models
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
+
+        public void SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
